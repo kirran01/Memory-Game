@@ -1,10 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Card = ({ card, cards, setCards }) => {
+const Card = ({ card, cards, setCards, setCount }) => {
     const [cardImg, setCardImg] = useState(card.imgURL)
-    console.log(card, 'c')
-    console.log(card.isFlipped, 'cif')
     const flipCard = () => {
         const updatedCards = cards.map(oneCard => {
             if (oneCard.id === card.id) {
@@ -14,9 +12,10 @@ const Card = ({ card, cards, setCards }) => {
             }
         })
         setCards(updatedCards)
+        setCount((previousState) => previousState + 1)
     }
     return (
-        <div onClick={() => flipCard()} className='flex justify-center border-8 border-double shadow-md m-5 bg-white border-indigo-100 rounded-md w-60 cursor-pointer'>
+        <div onClick={() => flipCard()} className={`${card.isMatched ? 'bg-transparent border-none' : 'bg-white border-indigo-100 border-8 border-double shadow-md'} flex justify-center m-5 rounded-md w-60 cursor-pointer`}>
             <img className='h-40 m-5' src={card.isFlipped ? `../${cardImg}` : <></>} alt="" />
         </div>
     );

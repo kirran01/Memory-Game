@@ -1,13 +1,39 @@
 import React from 'react';
 import Card from '../components/card';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Home = ({ cards, setCards }) => {
-    function startGame() {
-        console.log('startgame')
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+        console.log(count)
+        if (count == 2) {
+            compare()
+        }
+    }, [count])
+    function compare() {
+        const flippedCards = cards.filter(card => card.isFlipped === true)
+        if (flippedCards[0].name === flippedCards[1].name) {
+            const updatedCards = cards.map(card => {
+                if (card.id === flippedCards[0].id || card.id === flippedCards[1].id) {
+                    return { ...card, isFlipped: false, isMatched: true }
+                } else {
+                    return card
+                }
+            })
+            setCards(updatedCards)
+        } else {
+            const updatedCards = cards.map(card => {
+                if (card.id === flippedCards[0].id || card.id === flippedCards[1].id) {
+                    return { ...card, isFlipped: false }
+                } else {
+                    return card
+                }
+            })
+            setCards(updatedCards)
+        }
+        setCount(0)
     }
-
     const flipCards = () => {
         console.log('flip')
         const flipped = cards.map(card => {
@@ -30,7 +56,7 @@ const Home = ({ cards, setCards }) => {
                 {
                     cards.map(card => {
                         return (<>
-                            <Card key={card.id} card={card} cards={cards} setCards={setCards} />
+                            <Card key={card.id} card={card} cards={cards} setCards={setCards} setCount={setCount} />
                         </>)
                     })
                 }
