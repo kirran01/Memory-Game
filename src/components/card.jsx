@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Card = ({ card, cards, setCards, setCount, victory }) => {
+const Card = ({ card, cards, setCards, setCount, victory,count }) => {
     const [cardImg, setCardImg] = useState(card.imgURL)
     const [matched, setMatched] = useState(false)
     const flipCard = () => {
         const updatedCards = cards.map(oneCard => {
-            if (victory==null&&!oneCard.isMatched && oneCard.id === card.id) {
+            if (count<2&&victory==null&&!oneCard.isMatched && oneCard.id === card.id) {
                 return { ...oneCard, isFlipped: true }
             } else {
                 return oneCard

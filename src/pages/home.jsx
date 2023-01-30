@@ -24,7 +24,6 @@ const Home = ({ cards, setCards }) => {
             setVictory(false)
         }
     }, [lives])
-
     useEffect(() => {
         console.log(count)
         if (count == 2) {
@@ -87,13 +86,13 @@ const Home = ({ cards, setCards }) => {
             <h4 className='text-white p-2 bg-indigo-500 rounded-md'>Score: {score / 2}</h4>
             {!gameOver && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Lives: {hpDisplay}</h4>}
             {gameOver && !victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Failure</h4>}
-            {gameOver&& victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Success!</h4>}
+            {gameOver && victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Success!</h4>}
             <button onClick={startGame} className='bg-indigo-900 px-10 py-5 rounded-lg m-5'>Start</button>
             <div className='flex flex-wrap justify-center'>
                 {
                     cards.map(card => {
                         return (<>
-                            <Card key={card.id} card={card} cards={cards} setCards={setCards} setCount={setCount} victory={victory}/>
+                            <Card key={card.id} count={count} card={card} cards={cards} setCards={setCards} setCount={setCount} victory={victory} />
                         </>)
                     })
                 }
