@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 const Card = ({ card, cards, setCards, setCount }) => {
     const [cardImg, setCardImg] = useState(card.imgURL)
+    const [matched, setMatched] = useState(false)
     const flipCard = () => {
         const updatedCards = cards.map(oneCard => {
             if (oneCard.id === card.id) {

@@ -8,19 +8,21 @@ const Home = ({ cards, setCards }) => {
     useEffect(() => {
         console.log(count)
         if (count == 2) {
-            compare()
+            setTimeout(() => {
+                compare()
+            }, 1000);
         }
     }, [count])
     useEffect(() => {
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-          }
-          const shuffled = [...cards];
-          shuffle(shuffled);
-          setCards(shuffled);
+        }
+        const shuffled = [...cards];
+        shuffle(shuffled);
+        setCards(shuffled);
     }, [])
     function compare() {
         const flippedCards = cards.filter(card => card.isFlipped === true)
@@ -62,7 +64,7 @@ const Home = ({ cards, setCards }) => {
             <h1 className='text-center text-5xl m-5'>Memory Game</h1>
             <button onClick={startGame} className='bg-indigo-900 px-10 py-5 rounded-lg m-5'>Start</button>
             <div className='flex flex-wrap justify-center'>
-                { 
+                {
                     cards.map(card => {
                         return (<>
                             <Card key={card.id} card={card} cards={cards} setCards={setCards} setCount={setCount} />
