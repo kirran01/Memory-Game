@@ -6,7 +6,7 @@ const Card = ({ card, cards, setCards, setCount }) => {
     const [matched, setMatched] = useState(false)
     const flipCard = () => {
         const updatedCards = cards.map(oneCard => {
-            if (oneCard.id === card.id) {
+            if (!oneCard.isMatched && oneCard.id === card.id) {
                 return { ...oneCard, isFlipped: true }
             } else {
                 return oneCard
