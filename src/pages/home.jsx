@@ -10,6 +10,7 @@ const Home = ({ cards, setCards }) => {
     const [rollNum, setRollNum] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [victory, setVictory] = useState(null)
+    console.log(rollNum,'rn')
     let hpDisplay = '❤️️'.repeat((lives * -1) / 2)
     useEffect(() => {
         if (score === cards.length) {
@@ -50,7 +51,7 @@ const Home = ({ cards, setCards }) => {
         const shuffled = [...cards];
         shuffle(shuffled);
         setCards(shuffled);
-    }, [rollNum])
+    }, [])
 
     function compare() {
         const flippedCards = cards.filter(card => card.isFlipped === true)
@@ -103,7 +104,7 @@ const Home = ({ cards, setCards }) => {
             {gameOver && !victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Failure</h4>}
             {gameOver && victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Success!</h4>}
             <button onClick={startGame} className='bg-indigo-900 px-10 py-5 rounded-lg m-5'>Start</button>
-            <div className='flex flex-wrap justify-center m-10'>
+            <div className='flex flex-wrap justify-center mx-10 my-10  md:m-10 lg:m-10'>
                 {
                     cards.map(card => {
                         return (<>
