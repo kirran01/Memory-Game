@@ -7,6 +7,7 @@ const Home = ({ cards, setCards }) => {
     const [count, setCount] = useState(0)
     const [score, setScore] = useState(0)
     const [lives, setLives] = useState(-6)
+    const [rollNum, setRollNum] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [victory, setVictory] = useState(null)
     let hpDisplay = '❤️️'.repeat((lives * -1) / 2)
@@ -17,6 +18,7 @@ const Home = ({ cards, setCards }) => {
             setVictory(true)
         }
     }, [score])
+
     useEffect(() => {
         if (lives === 0) {
             console.log('game over')
@@ -24,6 +26,7 @@ const Home = ({ cards, setCards }) => {
             setVictory(false)
         }
     }, [lives])
+
     useEffect(() => {
         console.log(count)
         if (count == 2) {
@@ -33,6 +36,10 @@ const Home = ({ cards, setCards }) => {
         }
     }, [count])
 
+    const roll = (max) => {
+        let getRollNum = Math.floor(Math.random() * max);
+        setRollNum(getRollNum)
+    }
     useEffect(() => {
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -43,7 +50,7 @@ const Home = ({ cards, setCards }) => {
         const shuffled = [...cards];
         shuffle(shuffled);
         setCards(shuffled);
-    }, [])
+    }, [rollNum])
 
     function compare() {
         const flippedCards = cards.filter(card => card.isFlipped === true)
@@ -71,6 +78,7 @@ const Home = ({ cards, setCards }) => {
         setCount(0)
     }
     const startGame = () => {
+        roll(10000)
         const flipped = cards.map(card => {
             return { ...card, isFlipped: true, isMatched: false }
         })
