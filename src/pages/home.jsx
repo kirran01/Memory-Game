@@ -96,7 +96,7 @@ const Home = ({ cards, setCards }) => {
         }, 3000);
     }
     return (
-        <div className='h-screen flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
+        <div className='lg:h-screen md:h-screen flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
             <h1 className='text-center text-5xl m-5'>Memory Game</h1>
             <h4 className='text-white p-2 bg-indigo-500 rounded-md'>Score: {score / 2}</h4>
             {!gameOver && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Lives: {hpDisplay}</h4>}
