@@ -96,14 +96,14 @@ const Home = ({ cards, setCards }) => {
         }, 3000);
     }
     return (
-        <div className='lg:h-screen md:h-screen flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
+        <div className='flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
             <h1 className='text-center text-5xl m-5'>Memory Game</h1>
             <h4 className='text-white p-2 bg-indigo-500 rounded-md'>Score: {score / 2}</h4>
             {!gameOver && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Lives: {hpDisplay}</h4>}
             {gameOver && !victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Failure</h4>}
             {gameOver && victory && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Success!</h4>}
             <button onClick={startGame} className='bg-indigo-900 px-10 py-5 rounded-lg m-5'>Start</button>
-            <div className='flex flex-wrap justify-center'>
+            <div className='flex flex-wrap justify-center m-10'>
                 {
                     cards.map(card => {
                         return (<>
