@@ -32,6 +32,7 @@ const Home = ({ cards, setCards }) => {
             }, 1000);
         }
     }, [count])
+
     useEffect(() => {
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -43,6 +44,7 @@ const Home = ({ cards, setCards }) => {
         shuffle(shuffled);
         setCards(shuffled);
     }, [])
+
     function compare() {
         const flippedCards = cards.filter(card => card.isFlipped === true)
         if (flippedCards[0].name === flippedCards[1].name) {
@@ -70,12 +72,17 @@ const Home = ({ cards, setCards }) => {
     }
     const startGame = () => {
         const flipped = cards.map(card => {
-            return { ...card, isFlipped: true }
+            return { ...card, isFlipped: true, isMatched: false }
         })
         setCards(flipped)
+        setCount(0)
+        setScore(0)
+        setLives(-6)
+        setGameOver(false)
+        setVictory(null)
         setTimeout(() => {
             const flippedBack = cards.map(card => {
-                return { ...card, isFlipped: false }
+                return { ...card, isFlipped: false, isMatched: false }
             })
             setCards(flippedBack)
         }, 3000);

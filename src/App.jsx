@@ -20,7 +20,8 @@ function App() {
     { id: 5, name: 'mushroom', isFlipped: false, isMatched: false, imgURL: mushIcon },
     { id: 6, name: 'mushroom', isFlipped: false, isMatched: false, imgURL: mushIcon },
     { id: 7, name: 'poro', isFlipped: false, isMatched: false, imgURL: poroIcon },
-    { id: 8, name: 'poro', isFlipped: false, isMatched: false, imgURL: poroIcon }])
+    { id: 8, name: 'poro', isFlipped: false, isMatched: false, imgURL: poroIcon }
+  ])
 
   return (
     <div className="App">
