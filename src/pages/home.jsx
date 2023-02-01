@@ -14,7 +14,7 @@ const Home = ({ cards, setCards }) => {
     const [rollNum, setRollNum] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [victory, setVictory] = useState(null)
-    console.log(rollNum,'rn')
+    console.log(rollNum, 'rn')
     let hpDisplay = '❤️️'.repeat((lives * -1) / 2)
     useEffect(() => {
         if (score === cards.length) {
@@ -66,7 +66,7 @@ const Home = ({ cards, setCards }) => {
         }
         setCount(0)
     }
-    
+
     const startGame = () => {
         const shuffled = [...cards];
         shuffle(shuffled);
@@ -87,7 +87,7 @@ const Home = ({ cards, setCards }) => {
         }, 3000);
     }
     return (
-        <div className='flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
+        <div className='min-h-screen flex flex-col justify-center items-center content-center bg-indigo-300 text-white'>
             <h1 className='text-center text-5xl m-5'>Memory Game</h1>
             <h4 className='text-white p-2 bg-indigo-500 rounded-md'>Score: {score / 2}</h4>
             {!gameOver && <h4 className='text-white m-5 p-2 bg-indigo-500 rounded-md'>Lives: {hpDisplay}</h4>}
@@ -102,6 +102,11 @@ const Home = ({ cards, setCards }) => {
                         </>)
                     })
                 }
+            </div>
+
+            <div className='text-center bg-indigo-300'>
+                <h2 className='text-white text-2xl p-5'>Designed and Developed by Kirran Kirpalani</h2>
+                <h4 className='text-white'>Made with Vite JS & Tailwind</h4>
             </div>
 
         </div>

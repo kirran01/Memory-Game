@@ -28,7 +28,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Home cards={cards} setCards={setCards} />} />
       </Routes>
-      <Foot />
     </div>
   )
 }
