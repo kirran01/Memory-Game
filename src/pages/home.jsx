@@ -1,8 +1,12 @@
 import React from 'react';
 import Card from '../components/card';
 import { useState, useEffect } from 'react';
-
-
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 const Home = ({ cards, setCards }) => {
     const [count, setCount] = useState(0)
     const [score, setScore] = useState(0)
@@ -37,22 +41,6 @@ const Home = ({ cards, setCards }) => {
         }
     }, [count])
 
-    const roll = (max) => {
-        let getRollNum = Math.floor(Math.random() * max);
-        setRollNum(getRollNum)
-    }
-    useEffect(() => {
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-        const shuffled = [...cards];
-        shuffle(shuffled);
-        setCards(shuffled);
-    }, [])
-
     function compare() {
         const flippedCards = cards.filter(card => card.isFlipped === true)
         if (flippedCards[0].name === flippedCards[1].name) {
@@ -78,9 +66,11 @@ const Home = ({ cards, setCards }) => {
         }
         setCount(0)
     }
+    
     const startGame = () => {
-        roll(10000)
-        const flipped = cards.map(card => {
+        const shuffled = [...cards];
+        shuffle(shuffled);
+        const flipped = shuffled.map(card => {
             return { ...card, isFlipped: true, isMatched: false }
         })
         setCards(flipped)
@@ -90,7 +80,7 @@ const Home = ({ cards, setCards }) => {
         setGameOver(false)
         setVictory(null)
         setTimeout(() => {
-            const flippedBack = cards.map(card => {
+            const flippedBack = shuffled.map(card => {
                 return { ...card, isFlipped: false, isMatched: false }
             })
             setCards(flippedBack)
