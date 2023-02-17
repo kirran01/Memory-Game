@@ -4,4 +4,4 @@ This is my implementation of the classic card-matching memory game. Simply press
 
 This app is deployed on Netlify @ https://memory-game-kk.netlify.app/ 
 
-Check it out :)
+If you have some time, have a look! :)
